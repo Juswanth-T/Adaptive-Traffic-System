@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# How to open it locally?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Give the following commands sequentially
+(npm stands for Node Package Manager, and therefore you need Node.js installed before you can run npm commands.Follow this and install the latest version.)
+- npm i
+- npm install @google/generative-ai
+- npm start
 
-## Available Scripts
+Once you have given these commands a new tab would have opened in your browser, from there you can use this react application.
 
-In the project directory, you can run:
+## Adaptive Traffic Light System
 
-### `npm start`
+This application utilizes the Google Generative AI service to analyze images and provide information about traffic light durations. Here's an overview of the key features and functionalities:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### State Management
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The component uses the `useState` hook to manage various states, including:
+- `imageSrc`: An array holding the source URLs of selected images.
+- `imageParts`: An array storing generative parts of the selected images.
+- `errorText`: Stores any error messages that may occur during the image analysis.
+- `resultText`: Holds the result text obtained from the Google Generative AI service.
+- `isLoading`: Indicates whether the component is in a loading state.
+- `trafficLightData`: Stores parsed traffic light data obtained from the result text.
 
-### `npm test`
+### Google Generative AI Integration
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The component initializes the Google Generative AI service using an API key.
+- It sets a default prompt related to traffic light analysis.
 
-### `npm run build`
+### useEffect for ResultText Update
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Utilizes the `useEffect` hook to parse and update the `trafficLightData` state whenever `resultText` changes.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Handling File Changes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Implements `handleFileChange` to handle file input changes, updating `imageSrc` and `imageParts` accordingly.
 
-### `npm run eject`
+### Displaying Traffic Light Information
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Renders a grid of cards for each traffic light scenario, displaying images and associated durations for red, yellow, and green lights.
+- If `isLoading` is true, it displays "Loading..." for each duration.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Submit Button
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Provides a "Submit" button triggering the `handleSubmit` function to initiate image analysis.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Footer
 
-## Learn More
+- Displays a simple footer with a copyright notice.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Choose four video frames each from 4 different recordings representing different directions at the same time instance.
+2. Click the "Submit" button to trigger the analysis process.
+3. Observe real-time analysis results, including red, yellow, and green light durations for each scenario.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This application serves as the user interface for interacting with the adaptive traffic light system, offering a visual representation of the analyzed traffic light scenarios and their corresponding durations.
